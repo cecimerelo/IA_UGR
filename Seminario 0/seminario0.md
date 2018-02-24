@@ -146,9 +146,48 @@ Uso:
 </category>
 ~~~
 
-### Predicados o variables locales
-Se denominan *predicados*. Son variables globales, es decir, su valor puede ser consultado o modificado fuera de una regla.
+### Predicados o variables globales
+Se denominan *predicados*. Son variables globales, es decir, su valor puede ser consultado o modificado fuera de una regla. 
 
+#### Sintaxis
+
+~~~"xml"
+<set name="x">value</set>
+~~~
+
+#### Acceso
+
+~~~"xml"
+<get name="x"/>
+~~~
+
+#### Ejemplo de uso
+
+donde x representa el nombre de la variable
+
+~~~"xml"
+<category>
+	<pattern>^ me llamo *</pattern>
+	<template>
+		<set name="nombre"><star index="2"/></set>
+		<get name="nombre"> es un bonito nombre
+	</template>
+</category>
+~~~
+
+==> Una variable que se invoca sin haberle asignado un valor previamente devuelve siempre como valor "unknown".
 
 ### Variables Locales
 Su ámbito es local a una regla y su valor no puede ser consultado fuera de dicha regla.
+
+#### Sintaxis
+
+~~~"xml"
+<set var="x">value</set>
+~~~
+
+#### Accesi
+
+~~~"xml"
+<get var="x"/>
+~~~
