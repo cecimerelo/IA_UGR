@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+    <category>
+		<pattern>Hola *</pattern>
+		<template>
+			Hola, que tal?
+		</template>
+	</category>
+
+    <category>
+		<pattern>Hola ^</pattern>
+		<template>
+			Hola de nuevo, que tal?
+		</template>
+	</category>
+
+
+    <category>
+		<pattern>^ que tal tu</pattern>
+		<template>
+			Genial!!!
+		</template>
+	</category>
+
+    <category>
+		<pattern> Me llamo * </pattern>
+		<template>
+			Que casualidad, yo tambien me llamo <star/>
+		</template>
+	</category>
+
+    <category>
+		<pattern> Estudio * en *</pattern>
+		<template>
+			Yo también estudio <star/> en <star index="2"/>
+		</template>
+	</category>
+
+    <category>
+        <pattern>Cual es tu edad</pattern>
+        <template> 
+            Tengo <bot name="age"/> anios
+        </template>
+    </category>
+
+</aiml>
