@@ -2,7 +2,7 @@
 
 * Asignatura : IA
 
-* Unicersidad : UGR
+* Universidad : UGR
 
 * Curso : 2017 - 2018
 
