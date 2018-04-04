@@ -1,0 +1,16 @@
+fresa:rojo roja
+manzana:amarillo amarilla rojo roja verde
+naranja:naranja
+kiwi:verde 
+mandarina:naranja
+pinya:amarillo amarilla verde
+mango:verde
+melocoton:amarillo amarilla naranja
+higo:verde morado morada
+ciruela:amarillo amarilla morado morada
+pera:verde amarillo amarilla
+platano:amarillo amarilla
+coco:marron
+aguacate:verde
+nuez:marron
+cereza:rojo

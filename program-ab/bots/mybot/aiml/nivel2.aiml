@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+    <category>
+		<pattern> ^ PIENSO (YO) LA FRUTA </pattern>
+		<template>
+            <think>
+		        <set name="topic">humano_piensa_fruta</set>
+                <set name="lista_atributos"><readset>atributos</readset></set>
+                <set name="lista_frutas"><readset>frutas</readset></set>
+		    </think>
+            Okay.
+        </template>
+	</category>
+
+    <topic name="humano_piensa_fruta">
+
+        <!-- COMPROBADA -->
+       <category>
+            <pattern> (VALE) (OKAY) ^ LA TENGO </pattern>
+            <template>
+                <srai>
+                    YA TENGO LA FRUTA
+                </srai>
+            </template>
+        </category>
+
+        <!-- COMPROBADA -->
+        <category>
+            <pattern> (ESTOY) PENSANDO (EN) UNA FRUTA </pattern>
+            <template> 
+                Okay, avísame cuando la tengas 
+            </template>
+        </category>
+
+        <!-- COMPROBADA -->
+        <category>
+            <pattern> YA TENGO LA FRUTA </pattern>
+            <template>
+                <think>
+                    <set var="cantidad">
+                        <srai>COUNT <get name="lista_atributos"/></srai>
+                    </set>
+
+                    <set var="pos">
+                        <srai>RANDOM <get var="cantidad"/></srai>
+                    </set>
+
+                    <!-- Elegimos un atributo aleatorio para preguntarlo -->                    
+                    <set name="elegida">
+                        <srai>
+                            SELECTITEM <get var="pos"/> IN <get name="lista_atributos"/>
+                        </srai>
+                    </set>
+
+                </think>
+
+                <condition name="elegida">
+                    <li value="A">¿ La fruta tiene vitamina <get name="elegida"/> ? </li>
+                    <li value="B">¿ La fruta tiene vitamina <get name="elegida"/> ? </li>
+                    <li value="C">¿ La fruta tiene vitamina <get name="elegida"/> ? </li>
+                    <li> ¿ La fruta es <get name="elegida"/> ? </li>
+                </condition>
+                
+                <think>
+                    <!-- Eliminamos ese atributo de la lista para que no vuelva preguntarlo -->
+                    <set name="lista_atributos">
+                        <srai>
+                            REMOVEITEM <get var="pos"/> IN <get name="lista_atributos"/>
+                        </srai>
+                    </set>
+                </think>
+
+            </template>
+        </category>
+
+        <!-- Si la fruta que esta pensando el humano no tiene ese atributo -->
+        <category> 
+            <pattern> NO </pattern>
+            <template>
+                
+                <!-- Tenemos un set con todas las frutas, vamos sacando fruta a fruta, miramos en el map esa
+                        fruta y si NO tiene ese atributo -->                    
+                <think>
+                    <set var="fruta">
+                        <srai> ITERATE <get name="lista_frutas"/> </srai>
+                    </set>
+                </think>
+                
+                <condition var="fruta">
+
+                    <li value="$"></li>
+                    <li>
+                        <think>
+
+                            <!-- Obtenemos todos los atributos fruta a fruta -->
+                            <set var="atributos_fruta"><map name="atributos"><get var="fruta"/></map></set>
+
+                            <!-- Buscamos el atributo en una fila del map -->
+                            <set var="existe">
+                                <srai>FINDITEM <get name="elegida"/> IN <get var="atributos_fruta"/></srai>
+                            </set>
+
+                        </think>
+
+                        <!-- Si "elegida"  ESTA en la linea del map pues eliminamos dicha fruta-->
+                        <condition var="existe">
+
+                            <!--No hace nada -->
+                            <li value="0"> </li>
+                            <li>
+                                <think>
+                                    <set var="pos_borrar">
+                                        <srai>
+                                            FINDITEM <get var="fruta"/> IN <get name="lista_frutas"/>
+                                        </srai>
+                                    </set>
+
+                                    <set var="a_eliminar">
+                                        <srai>
+                                            SELECTITEM <get var="pos_borrar"/> IN <get name="lista_frutas"/>
+                                        </srai>
+                                    </set>
+
+                                    <set name="lista_frutas">
+                                        <srai>
+                                            REMOVEITEM <get var="pos_borrar"/> IN <get name="lista_frutas"/>
+                                        </srai>
+                                    </set>
+                                </think>
+                            </li>
+                            
+                        </condition>
+
+                        <think>
+                            <set var="fruta">
+                                <srai>NEXT</srai>
+                            </set>
+                        </think>
+                        <loop/>
+                    </li>
+
+                </condition>
+
+                <think>
+                    <!-- Contamos el numero de frutas que quedan en el set -->
+                    <set var="frutas_restantes">
+                        <srai>COUNT <get name="lista_frutas"/></srai>
+                    </set>
+                </think>
+                
+                <!-- Si es uno entonces ya tenemos la fruta -->
+                <condition var="frutas_restantes">
+
+                    <li value="1">
+                        <srai>
+                            YA SE LA FRUTA
+                        </srai>
+                    </li>
+
+                    <li> 
+                        <srai>
+                            YA TENGO LA FRUTA
+                        </srai>
+                    </li>
+
+                </condition>
+
+
+            </template>
+
+        </category>
+
+        <!-- Si la fruta que esta pensando el humano SI tiene ese atributo -->
+        <category> 
+            <pattern> SI </pattern>
+            <template>        
+
+                <think>
+                    <set var="fruta">
+                        <srai> ITERATE <get name="lista_frutas"/> </srai>
+                    </set>
+                </think>
+                
+                <condition var="fruta">
+
+                    <li value="$"></li>
+                    <li>
+                        <think>
+
+                            <!-- Obtenemos todos los atributos fruta a fruta -->
+                            <set var="atributos_fruta"><map name="atributos"><get var="fruta"/></map></set>
+
+                            <!-- Buscamos el atributo en la fila del map -->
+                            <set var="existe">
+                                <srai>
+                                    FINDITEM <get name="elegida"/> IN <get var="atributos_fruta"/>
+                                </srai>
+                            </set>
+
+                        </think>
+
+                        <!-- Si "elegida"  NO ESTA en la linea del map pues eliminamos dicha fruta-->
+                        <condition var="existe">
+
+                            <li value="0">
+                                <think>
+                                    <set var="pos_borrar">
+                                        <srai>
+                                            FINDITEM <get var="fruta"/> IN <get name="lista_frutas"/>
+                                        </srai>
+                                    </set>
+
+                                    <set name="lista_frutas">
+                                        <srai>
+                                            REMOVEITEM <get var="pos_borrar"/> IN <get name="lista_frutas"/>
+                                        </srai>
+                                    </set>
+                                </think>
+                            </li>
+
+                            <li></li>
+
+                        </condition>
+
+                        <think>
+                            <set var="fruta">
+                                <srai>NEXT</srai>
+                            </set>
+                        </think>
+                        <loop/>
+                    </li>
+
+                </condition>
+
+                <think>
+                    <!-- Contamos el numero de frutas que quedan en el set -->
+                    <set var="frutas_restantes">
+                        <srai>COUNT <get name="lista_frutas"/></srai>
+                    </set>
+                </think>
+
+                <!-- Si es uno entonces ya tenemos la fruta -->
+                <condition var="frutas_restantes">
+ 
+                    <li value="1">
+                        <srai>
+                            YA SE LA FRUTA
+                        </srai>
+                    </li>
+
+                    <li> 
+                        <srai>
+                            YA TENGO LA FRUTA
+                        </srai>
+                    </li>
+
+                </condition>
+                           
+
+            </template>
+        </category>
+
+        <category>
+            <pattern> YA SE LA FRUTA </pattern>
+            <template>
+                <set var="fruta_adivinada"> 
+                    <srai>TOP <get name="lista_frutas"/></srai>
+                </set>
+                La fruta es <get var="fruta_adivinada"/>
+            </template>    
+        </category>
+
+    </topic>
+   
+</aiml>
