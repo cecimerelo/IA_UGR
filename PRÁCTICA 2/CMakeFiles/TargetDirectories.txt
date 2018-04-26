@@ -1,9 +1,9 @@
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/BelkanSG.dir
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/Belkan.dir
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/rebuild_cache.dir
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/motorLib.dir
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/obj3DLib.dir
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/edit_cache.dir
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/GLUILib.dir
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/modelosBelkanLib.dir
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/comportamientosLib.dir
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/BelkanSG.dir
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/Belkan.dir
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/rebuild_cache.dir
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/motorLib.dir
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/obj3DLib.dir
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/edit_cache.dir
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/GLUILib.dir
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/modelosBelkanLib.dir
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/comportamientosLib.dir

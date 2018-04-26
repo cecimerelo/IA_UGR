@@ -6,37 +6,37 @@
 
 #IncludeRegexTransform: 
 
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/entidad.cpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/entidad.cpp
 motorlib/entidad.hpp
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/motorlib/entidad.hpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/motorlib/entidad.hpp
 
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/mapa.cpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/mapa.cpp
 motorlib/mapa.hpp
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/motorlib/mapa.hpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/motorlib/mapa.hpp
 
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/monitor.cpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/monitor.cpp
 motorlib/monitor.hpp
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/motorlib/monitor.hpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/motorlib/monitor.hpp
 fstream
 -
 
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/motor_grafico.cpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/motor_grafico.cpp
 motorlib.hpp
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/motorlib.hpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/motorlib.hpp
 glui/glui.h
 -
 dirent.h
 -
 
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/motor_juego.cpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/motor_juego.cpp
 motorlib.hpp
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/motorlib.hpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/motorlib.hpp
 unistd.h
 -
 
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/util.cpp
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/util.cpp
 motorlib/util.h
-/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/motorlib/motorlib/util.h
+/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/motorlib/motorlib/util.h
 
 Comportamientos_Jugador/aldeano.hpp
 chrono

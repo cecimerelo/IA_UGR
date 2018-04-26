@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/Comportamientos_Jugador/aldeano.cpp" "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/comportamientosLib.dir/Comportamientos_Jugador/aldeano.cpp.o"
-  "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/Comportamientos_Jugador/jugador.cpp" "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/comportamientosLib.dir/Comportamientos_Jugador/jugador.cpp.o"
-  "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/src/comportamientos/comportamiento.cpp" "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/comportamientosLib.dir/src/comportamientos/comportamiento.cpp.o"
+  "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/Comportamientos_Jugador/aldeano.cpp" "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/comportamientosLib.dir/Comportamientos_Jugador/aldeano.cpp.o"
+  "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/Comportamientos_Jugador/jugador.cpp" "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/comportamientosLib.dir/Comportamientos_Jugador/jugador.cpp.o"
+  "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/src/comportamientos/comportamiento.cpp" "/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/comportamientosLib.dir/src/comportamientos/comportamiento.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -6,5 +6,5 @@ CXX_FLAGS =  -fopenmp -pthread -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I"/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/include" 
+CXX_INCLUDES = -I"/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/include" 
 

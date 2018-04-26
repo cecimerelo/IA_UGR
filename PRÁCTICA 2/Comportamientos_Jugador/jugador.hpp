@@ -42,7 +42,7 @@ class ComportamientoJugador : public Comportamiento {
     int fil, col, brujula;
     estado destino;
     list<Action> plan;
-     
+
     bool pathFinding(const estado &origen, const estado &destino, list<Action> &plan);
     void PintaPlan(list<Action> plan);
 };
