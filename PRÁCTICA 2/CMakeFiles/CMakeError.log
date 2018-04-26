@@ -1,0 +1,26 @@
+Detecting C [-std=c11] compiler features failed to compile with the following output:
+Change Dir: /home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2155d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2155d.dir/build.make CMakeFiles/cmTC_2155d.dir/build
+make[1]: se entra en el directorio '/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/CMakeTmp'
+CMakeFiles/cmTC_2155d.dir/build.make:64: *** el patrón de objetivo no contiene '%'.  Alto.
+make[1]: se sale del directorio '/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/CMakeTmp'
+Makefile:126: fallo en las instrucciones para el objetivo 'cmTC_2155d/fast'
+make: *** [cmTC_2155d/fast] Error 2
+
+
+
+Detecting CXX [-std=c++14] compiler features failed to compile with the following output:
+Change Dir: /home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_72313/fast"
+/usr/bin/make -f CMakeFiles/cmTC_72313.dir/build.make CMakeFiles/cmTC_72313.dir/build
+make[1]: se entra en el directorio '/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/CMakeTmp'
+CMakeFiles/cmTC_72313.dir/build.make:64: *** el patrón de objetivo no contiene '%'.  Alto.
+make[1]: se sale del directorio '/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/PRACTICA 2 :: REAL/CMakeFiles/CMakeTmp'
+Makefile:126: fallo en las instrucciones para el objetivo 'cmTC_72313/fast'
+make: *** [cmTC_72313/fast] Error 2
+
+
+
