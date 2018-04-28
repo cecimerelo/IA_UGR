@@ -1,0 +1,11 @@
+url:http://www.alicebot.org
+name:boteqe
+email:myBot@gmail.com
+gender:male
+botmaster:Raul	
+organization:ugr
+age:19
+job:estudiante
+version:0.0.4
+
+

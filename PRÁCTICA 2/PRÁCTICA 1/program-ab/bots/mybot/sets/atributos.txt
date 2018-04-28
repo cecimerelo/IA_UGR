@@ -1,0 +1,16 @@
+amarilla
+roja
+verde
+marron
+naranja
+morada
+A
+B
+C
+semiacida
+acida
+dulce
+neutra
+pequenya
+mediana
+grande

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+	<category>
+		<pattern> (COMO)(QUIERO) (DIME) ^ EVALUACION ^ ASIGNATURA</pattern>
+		<template>
+			<think>
+				<set name="topic">evaluacion_asignatura</set>
+			</think>
+		Pregunta lo que quieras.
+		</template>
+	</category>
+	
+	<topic name="evaluacion_asignatura">
+
+		<category>
+			<pattern> (MUCHAS) GRACIAS </pattern>
+			<template>
+				De nada.
+				<think><set name="topic">unknown</set></think>
+			</template>
+		</category>
+		<category>
+			<pattern> ^ SUPERAR ^ PARTE PRACTICA </pattern>
+			<template>
+				<random>
+					<li>Tu nota debe ser mayor o igual que 3</li>
+					<li>Debes tener un 3 o mas</li>
+				</random>
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ NOTA ^ MINIMA ^ APROBAR</pattern>
+			<template>
+				Tu nota debe ser mayor o igual a 5, la media de ambas partes, 
+	sabiendo que las dos valen el 50% de la asignatura.
+			</template>
+
+		</category>
+	<!--EVALUACION CONVOCATORIA ORDINARIA-->
+		<category>
+			<pattern> ^ SE EVALUA ^ CONVOCATORIA ORDINARIA </pattern>
+			<template>
+				Depende de si es la parte de teoria o la de practica ¿Cual quieres saber?
+				<set name="topic">ordinaria</set>
+			</template>
+		</category>
+
+		<topic name="ordinaria">
+			<category>
+				<pattern> ^ DE TEORIA ^ </pattern>
+				<template>
+					<think><set name="topic">unknown</set></think>
+				<srai>
+					CONVOCATORIA ORDINARIA TEORÍA
+				</srai></template>
+			</category>
+
+			<category>
+				<pattern> ^ DE PRACTICA ^ </pattern>
+				<template>
+				<think><set name="topic">unknown</set></think>
+				<srai>
+					CONVOCATORIA ORDINARIA PRACTICA
+				</srai></template>
+			</category>
+		</topic>
+
+			<category>
+				<pattern> CONVOCATORIA ORDINARIA TEORIA </pattern>
+				<template>
+					Durante el curso se realizarán dos pruebas. La nota de teoría será la 
+		media sobre las dos pruebas.
+				</template>
+			</category>
+
+			<category>
+				<pattern> CONVOCATORIA ORDINARIA PRACTICA </pattern>
+				<template>
+					Se tendra en cuenta:
+					- 10% : La asistencia y participacion a las clases
+					- 90% : Adicionalmente se realizaran 3 practicas y un examen de problema. 
+		La nota sera la media de estas 4 pruebas.
+				</template>
+			</category>
+
+
+		<!-- EVALUACION CONVOCATORIA EXTRAORDINARIA -->
+
+		<category>
+			<pattern> ^ PRACTICAS ^ CONVOCATORIA EXTRAORDINARIA </pattern>
+			<template>
+				No hay examen de practicas, habra un examen unico(evaluado de 0 a 10) 
+	que incluira preguntas tanto de tipo teorico como practico.
+			</template>
+		</category>
+
+
+		<!-- ASISTENCIA A CLASE-->
+		<category>
+			<pattern> ^ ASISTIR ^ CLASE  ^ (REGULARMENTE) </pattern>
+			<template>
+				La asistencia a clases teoricas no es obligatoria. Sin embargo, 
+	se requerira asistir a alguna de las sesiones de practicas dentro de los 
+	limites de la entrega de cada practica y defienda ante el profesor el 
+	resultado de la correspondiente.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ (CLASES) PRACTICAS ^ OBLIGATORIAS </pattern>
+			<template> 
+				Se requerira asistir a alguna de las sesiones de practicas dentro de los 
+	limites de la entrega de cada practica y defender ante el profesor el 
+	resultado de la correspondiente.
+			</template>
+		</category>
+
+		<category>
+			<pattern> (CUANTO) ^ CADA PRACTICA ^ (RESPECTO) * NOTA FINAL </pattern>
+			<template> 
+				Vale un 11.25% respecto a la nota final.
+			</template>
+		</category>
+
+		<category>
+			<pattern> (CUANTO) ^ PARTICIPACION (CON) (RESPECTO) (A) (LA) NOTA FINAL </pattern>
+			<template> 
+				Constituye un 20% de la nota final.
+			</template>
+		</category>
+
+		<category>
+			<pattern> (COMO) ^ PUNTOS (POR) PARTICIPACION </pattern>
+			<template> 
+				Resolviendo los problemas propuestos en clase, respondiendo en clase. Basicamente
+	participando en clase.
+			</template>
+		</category>
+
+		<category>
+			<pattern> (LOS) TRABAJOS (SON) INDIVIDUALES </pattern>
+			<template> 
+				Si.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ (PUEDEN) HACER ^ TRABAJOS (EN) GRUPO </pattern>
+			<template> 
+				No, son individuales.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ ENTREGAR ^ (EJERCICIOS) ^ RELACIONES DE PROBLEMAS </pattern>
+			<template> 
+				No.
+			</template>
+		</category>
+
+		<category>
+			<pattern> CUANTO [VALE PONDERA] ^ PRIMER EXAMEN DE TEORIA </pattern>
+			<template> 
+				Valen los mismo las dos pruebas.
+			</template>
+		</category>
+
+		<category>
+			<pattern> PUEDO RECUPERAR UNA PRACTICA [U O] ^ EXAMEN </pattern>
+			<template> 
+				No.
+			</template>
+		</category>
+
+		<category>
+			<pattern> PUEDO RECUPERAR ^ CLASE ^ [PRACTICA PRACTICAS] </pattern>
+			<template>
+				No.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ QUE ^ (SI) (ME) COPIO DE [OTRO UN] [ESTUDIANTE COMPANYERO]</pattern>
+			<template> 
+				Los involucrados, tanto el que se copio como el que se dejo copiar,
+	tendran suspensa la asignatura.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ QUE ^ (SI) (ME) DEJO COPIAR [DE POR] [OTRO UN] [ESTUDIANTE COMPANYERO]</pattern>
+			<template> 
+				Los involucrados, tanto el que se copio como el que se dejo copiar,
+	tendran suspensa la asignatura.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ SI SUSPENDO ^ CONVOCATORIA ORDINARIA </pattern>
+			<template>
+				Seras evaluado en la extraordinaria.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ VALE ^ PRACTICA Y ^ TEORIA </pattern>
+			<template>
+				Valen ambas partes lo mismo, un 50%.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ HORARIO DE TUTORIAS ^ [PROFESOR PROFE] ^ PRACTICAS </pattern>
+			<template>
+				Miercoles de 8:30 a 11:30 en D40 (ETSIIT)
+	Jueves de 8:30 a 11:30 en D40 (ETSIIT)
+	Recomendable cita previa
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ PUEDE APROBAR ^ PARTE PRACTICA ^ NO ^ PRESENTO UNA PRACTICA </pattern>
+			<template>
+				Si que se puede, mientras la media al final te salga probada.
+			</template>
+		</category>
+
+		<category>
+			<pattern> CUAL ^ NOTA MINIMA ^ EN CADA PARTE PARA ^ MEDIA </pattern>
+			<template>
+				Un 3 como minimo en cada parte.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ PUNTUACION (OBTENGO) ^ PRACTICA 1 ^ DEFENDER (EL) NIVEL 3 ^ NO LO [PASO CONSIGO SUPERO] </pattern>
+			<template>
+				Obtendra un minimo de 6 si no has hecho el nivel 2 y un 8 si lo hiciste.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ ENTREGAR ^ PRACTICA 1 SIN [HACER REALIZAR] LA TAREA ^ NIVEL 0 </pattern>
+			<template>
+				El nivel 0 es lo minimo que hay que entregar para que la practica sea considerada
+	para su evaluacion. Por lo que es obligatorio.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ HACER SI NO PUEDO ASISTIR ^ SESION DE PRACTICAS ^ [CORRESPONDE TOCA] HACER ^ DEFENSA ^ PRACTICA 1 </pattern>
+			<template>
+				Mientras este justificado el profesor no tendra problema en cambiarte el dia.
+			</template>
+		</category>
+
+		<category>
+			<pattern> CUANTAS PRUEBAS TEORICAS (TENDRE)^ CURSO</pattern>
+			<template><srai>
+				CONVOCATORIA ORDINARIA TEORIA
+			</srai></template>
+		</category>
+
+		<!-- A partir de aqui no probe nada -->
+		
+		<category>
+			<pattern> [QUE CUANTO] VALE ^ PRIMERA PRUEBA ^ TEORICA</pattern>
+			<template>
+				Vale el 50% de la nota de teoria.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ CONSISTE ^ EXAMEN DE [EJERCICIOS PROBLEMAS]</pattern>
+			<template>
+				Resolucion de problemas vistos en clase.	
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ DEBERIA HACER ^ NO ESTOY SEGURO ^ PODER SUPERAR ^ NIVEL 3 ^ PRACTICA 1</pattern>
+			<template>
+				No pierdes nada por intentarlo, pero si no lo consigues pues lo mejor sera que no
+	lo entregues.	
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ C++ ^ HACER LA PRACTICA EN [ESE ESTE] LENGUAJE </pattern>
+			<template>
+				El objetivo de la primera practica es definir bases de conocimiento en AIML, asi que
+	supongo que no.
+			</template>
+		</category>
+
+		<category>
+			<pattern> ^ [ENCANTAN GUSTAN] ^ LOS AGENTES CONVERSACIONALES ^ EXPERTO EN SU CONSTRUCCION ^ USAR UN AGENTE CONVERSACIONAL ^ MI LUGAR ^ HACER LA DEFENSA DE PRACTICAS</pattern>
+			<template>
+				Las unicas actividades no presenciales son el estudio y el trabajo en grupo, por lo que en la defensa hay que estar presente.
+			</template>
+		</category>
+
+	</topic>
+
+
+	
+</aiml>

@@ -1,0 +1,26 @@
+Detecting C [-std=c11] compiler features failed to compile with the following output:
+Change Dir: /home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fe2f6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fe2f6.dir/build.make CMakeFiles/cmTC_fe2f6.dir/build
+make[1]: se entra en el directorio '/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/CMakeTmp'
+CMakeFiles/cmTC_fe2f6.dir/build.make:64: *** el patrón de objetivo no contiene '%'.  Alto.
+make[1]: se sale del directorio '/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/CMakeTmp'
+Makefile:126: fallo en las instrucciones para el objetivo 'cmTC_fe2f6/fast'
+make: *** [cmTC_fe2f6/fast] Error 2
+
+
+
+Detecting CXX [-std=c++14] compiler features failed to compile with the following output:
+Change Dir: /home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5a0fb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5a0fb.dir/build.make CMakeFiles/cmTC_5a0fb.dir/build
+make[1]: se entra en el directorio '/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/CMakeTmp'
+CMakeFiles/cmTC_5a0fb.dir/build.make:64: *** el patrón de objetivo no contiene '%'.  Alto.
+make[1]: se sale del directorio '/home/ceci/Escritorio/pendrive/FACULTAD/SEGUNDO/SEGUNDO CUATRI/IA/Prácticas IA :: UGR/PRÁCTICA 2/CMakeFiles/CMakeTmp'
+Makefile:126: fallo en las instrucciones para el objetivo 'cmTC_5a0fb/fast'
+make: *** [cmTC_5a0fb/fast] Error 2
+
+
+
