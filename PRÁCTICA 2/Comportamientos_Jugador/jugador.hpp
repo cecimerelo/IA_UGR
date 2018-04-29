@@ -31,6 +31,8 @@ public:
     destino.orientacion = -1;
     hayPlan = false;
     ultimaAccion = actIDLE;
+    pair<int,int> posAldeano = make_pair(-1,-1);
+
   }
   ComportamientoJugador(std::vector<std::vector<unsigned char>> mapaR) : Comportamiento(mapaR)
   {
@@ -42,6 +44,8 @@ public:
     destino.orientacion = -1;
     hayPlan = false;
     ultimaAccion = actIDLE;
+    pair<int,int> posAldeano = make_pair(-1,-1);
+
   }
   ComportamientoJugador(const ComportamientoJugador &comport) : Comportamiento(comport) {}
   ~ComportamientoJugador() {}
@@ -62,6 +66,7 @@ private:
   estado destino;
   list<Action> plan;
   bool hayPlan;
+  pair<int,int> posAldeano;
 
   bool pathFinding(const estado &origen, const estado &destino, list<Action> &plan);
   void PintaPlan(list<Action> plan);
