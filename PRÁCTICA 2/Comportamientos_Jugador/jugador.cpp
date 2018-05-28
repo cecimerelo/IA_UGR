@@ -37,7 +37,8 @@ bool ComportamientoJugador::esSueloValido(int fila, int columna)
 	//cout << "Dentro de esSueloValido con " << fila << ":" << columna << endl << fflush ;
 	//cout << "Es suelo valido: " << mapaResultado[fila][columna] << endl << fflush;
 
-	if (fila != posAldeano.first or columna != posAldeano.second ){
+	if (fila != posAldeano.first or columna != posAldeano.second)
+	{
 
 		if (mapaResultado[fila][columna] == 'S' or mapaResultado[fila][columna] == 'T' or mapaResultado[fila][columna] == 'K')
 		{
@@ -97,7 +98,7 @@ void ComportamientoJugador::muestraLista(list<nodo> lista)
 
 bool ComportamientoJugador::pathFinding(const estado &origen, const estado &destino, list<Action> &plan)
 {
-    plan.clear();
+	plan.clear();
 	list<nodo> nodosAbiertos;
 	list<nodo> nodosCerrados;
 	stack<nodo> recorrido;
@@ -283,29 +284,30 @@ Action ComportamientoJugador::think(Sensores sensores)
 	switch (ultimaAccion)
 	{
 	case actTURN_R:
-		brujula = (brujula+1)%4;
+		brujula = (brujula + 1) % 4;
 		break;
 	case actTURN_L:
-		brujula = (brujula+3)%4;
+		brujula = (brujula + 3) % 4;
 		break;
 	case actFORWARD:
-	    if(sensores.mensajeF == -1){
-            switch (brujula)
-            {
-            case 0:
-                fil--;
-                break;
-            case 1:
-                col++;
-                break;
-            case 2:
-                fil++;
-                break;
-            case 3:
-                col--;
-                break;
-            }
-	    }
+		if (sensores.mensajeF == -1)
+		{
+			switch (brujula)
+			{
+			case 0:
+				fil--;
+				break;
+			case 1:
+				col++;
+				break;
+			case 2:
+				fil++;
+				break;
+			case 3:
+				col--;
+				break;
+			}
+		}
 		//cout << "fil: " << fil << "  col: " << col << " Or: " << brujula << endl;
 	}
 
@@ -319,20 +321,20 @@ Action ComportamientoJugador::think(Sensores sensores)
 	//Comprobar si la siguiente casilla es un aldeano
 	if (hayPlan && sensores.superficie[2] == 'a' && plan.front() == actFORWARD)
 	{
-		//almacenamos la casilla en la que se ecnontraba el aldenano
+		//almacenamos la casilla en la que se encontraba el aldenano
 		switch (brujula)
 		{
 		case 0:
-			posAldeano = make_pair(fil-1, col);
+			posAldeano = make_pair(fil - 1, col);
 			break;
 		case 1:
-			posAldeano = make_pair(fil, col+1);
+			posAldeano = make_pair(fil, col + 1);
 			break;
 		case 2:
-			posAldeano = make_pair(fil+1, col);
+			posAldeano = make_pair(fil + 1, col);
 			break;
 		case 3:
-			posAldeano = make_pair(fil, col-1);
+			posAldeano = make_pair(fil, col - 1);
 			break;
 		}
 
@@ -351,7 +353,7 @@ Action ComportamientoJugador::think(Sensores sensores)
 		destino.columna = sensores.destinoC;
 
 		hayPlan = pathFinding(origen, destino, plan);
-		posAldeano = make_pair(-1,-1);
+		posAldeano = make_pair(-1, -1);
 	}
 
 	// Ejecutar el plan
