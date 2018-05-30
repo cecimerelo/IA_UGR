@@ -56,7 +56,6 @@ int Botdemort::minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad,
 	if (jugadorAMaximizar)
 	{
 		alpha = INT_MIN;
-
 		// para cada  movimiento posible del juego
 		for (int i = 0; i < 6; i++)
 		{
@@ -129,10 +128,6 @@ Move Botdemort::nextMove(const vector<Move> &adversary, const GameState &state)
 			if (aux.puntuacion > maxValor)
 			{
 				maxValor = aux.puntuacion;
-				movimiento = aux.movimiento;
-			}
-			else if (aux.puntuacion == maxValor && hijo.getCurrentPlayer() == me)
-			{
 				movimiento = aux.movimiento;
 			}
 		}
