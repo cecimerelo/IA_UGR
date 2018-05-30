@@ -20,43 +20,23 @@ struct Nodo
 	int puntuacion;
 };
 
-/*
-class Nodo
-{
-  public:
-	Nodo *parent;
-	GameState estado;
-	list<Nodo> children;
-
-	Nodo();
-	Nodo(std::string iTextContent, std::string iTagName);
-
-	void setChild(Nodo child);
-	void setParent(Nodo *parent);
-
-	bool hasChildren();
-	bool hasParent();
-
-	Nodo *getParent();
-	Nodo getChild(int pos);
-
-	int obtenerProfundidad(Nodo *node);
-	int childrenNumber();
-};
-*/
 class Botdemort : Bot
 {
+  private:
+	Player me;
+	Player contrario;
 
   public:
 	Botdemort();
 	~Botdemort();
 
+	int evaluaNodo(const GameState &tablero);
 	Move proximoMovimiento(Nodo state, Player jugador);
 	void initialize();
 	string getName();
 	Move nextMove(const vector<Move> &adversary, const GameState &state);
 	bool esNodoTerminal(Nodo estado);
-	int minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad, int alpha, int beta, bool jugadorAMaximizar, Player jugador);
+	int minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad, int alpha, int beta, bool jugadorAMaximizar);
 };
 
 #endif

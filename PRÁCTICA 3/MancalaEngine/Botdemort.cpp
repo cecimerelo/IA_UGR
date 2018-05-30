@@ -39,51 +39,60 @@ string Botdemort::getName()
 	profundidad: longitud del camino que comienza en la raiz y acaba en 
 	el Nodo 
 */
-
-int Botdemort::minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad, int alpha, int beta, bool jugadorAMaximizar, Player jugador)
+int Botdemort::evaluaNodo(const GameState &tablero) // 0. No le he pasado player pq no esta en el .h
 {
-	Nodo node;
+	return tablero.getScore(me);
+}
 
+int Botdemort::minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad, int alpha, int beta, bool jugadorAMaximizar)
+{
 	GameState hijo;
 	Move movimientosPosibles[6] = {M1, M2, M3, M4, M5, M6};
-	int aux1 = 0;
+	int aux1;
 
-	// el valor del tablero sería el numero de semillas en el granero del jugador
 	if (tablero.isFinalState() or profundidad == 0)
-		return tablero.getScore(jugador);
+		return evaluaNodo(tablero);
 
 	if (jugadorAMaximizar)
 	{
-		aux1 = INT_MIN;
+		alpha = INT_MIN;
+
 		// para cada  movimiento posible del juego
 		for (int i = 0; i < 6; i++)
 		{
-			hijo = tablero.simulateMove(movimientosPosibles[i]);
-			aux1 = max(aux1, minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, false, jugador));
+			if (tablero.getSeedsAt(me, (Position)(i + 1)) > 0)
+			{
+				hijo = tablero.simulateMove(movimientosPosibles[i]);
+				aux1 = max(aux1,minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, (hijo.getCurrentPlayer() == me)));
 
-			alpha = max(alpha, aux1);
+				alpha = max(alpha, aux1);
 
-			if (beta <= alpha)
-				break;
+				if (beta <= alpha)
+					break;
+			}
 		}
 
-		return aux1;
+		//should be aux1
+		return alpha;
 	}
 
 	else
 	{
-		aux1 = INT_MAX;
+		beta = INT_MAX;
 		for (int i = 0; i < 6; i++)
 		{
-			hijo = tablero.simulateMove(movimientosPosibles[i]);
-			aux1 = min(aux1, minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, true, jugador));
+			if (tablero.getSeedsAt(contrario, (Position)(i + 1)) > 0)
+			{
+				hijo = tablero.simulateMove(movimientosPosibles[i]);
+				aux1 = min(aux1,minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, !(hijo.getCurrentPlayer() == me)));
 
-			beta = min(beta, aux1);
-			if (beta <= alpha)
-				break;
+				beta = min(beta, aux1);
+				if (beta <= alpha)
+					break;
+			}
 		}
 
-		return aux1;
+		return beta;
 	}
 }
 
@@ -91,7 +100,12 @@ Move Botdemort::nextMove(const vector<Move> &adversary, const GameState &state)
 {
 	Move movimiento = M_NONE;
 
-	Player jugador = state.getCurrentPlayer();
+	me = this->getPlayer();
+
+	if (me == J1)
+		contrario = J2;
+	else
+		contrario = J1;
 
 	long timeout = this->getTimeOut();
 
@@ -99,98 +113,30 @@ Move Botdemort::nextMove(const vector<Move> &adversary, const GameState &state)
 
 	GameState hijo;
 
-	int maxValor = 0;
+	int maxValor = INT_MIN;
 
 	Move movimientosPosibles[6] = {M1, M2, M3, M4, M5, M6};
 
 	for (int i = 0; i < 6; i++)
 	{
-		hijo = state.simulateMove(movimientosPosibles[i]);
-		aux.movimiento = movimientosPosibles[i];
-		aux.puntuacion = minimaxConPodaAlfaBeta(hijo, 9, INT_MIN, INT_MAX, true, jugador);
-
-		if (aux.puntuacion > maxValor)
+		if (state.getSeedsAt(me, (Position)(i + 1)) > 0)
 		{
-			maxValor = aux.puntuacion;
-			movimiento = aux.movimiento;
+
+			hijo = state.simulateMove(movimientosPosibles[i]);
+			aux.movimiento = movimientosPosibles[i];
+			aux.puntuacion = minimaxConPodaAlfaBeta(hijo, 9, INT_MIN, INT_MAX, true);
+
+			if (aux.puntuacion > maxValor)
+			{
+				maxValor = aux.puntuacion;
+				movimiento = aux.movimiento;
+			}
+			else if (aux.puntuacion == maxValor && hijo.getCurrentPlayer() == me)
+			{
+				movimiento = aux.movimiento;
+			}
 		}
 	}
 
 	return movimiento;
 }
-
-/*
-Nodo::Nodo(){};
-
-void Nodo::setChild(Nodo child)
-{
-	child.setParent(this);
-	children.push_back(child);
-}
-
-void Nodo::setParent(Nodo *p)
-{
-	parent = p;
-}
-
-bool Nodo::hasChildren()
-{
-	bool tieneHijos = false;
-	if (children.size() > 0)
-		tieneHijos = true;
-
-	return tieneHijos;
-}
-
-bool Nodo::hasParent()
-{
-	bool tienePadre = false;
-
-	if (parent != NULL)
-		tienePadre = true;
-
-	return tienePadre;
-}
-
-Nodo *Nodo::getParent()
-{
-	return parent;
-}
-Nodo Nodo::getChild(int pos)
-{
-
-	list<Nodo>::iterator it = children.begin();
-	Nodo aux;
-	int tam;
-
-	for (it = children.begin(); it != children.end(); ++it)
-	{
-		aux = *it;
-		tam++;
-
-		if (tam == pos)
-			break;
-	}
-
-	return aux;
-}
-
-int Nodo::obtenerProfundidad(Nodo *node){
-
-	int profundidad = 0;
-	Nodo *aux;
-
-	while( (*aux).hasParent()){
-		profundidad++;
-		aux = (*aux).getParent();
-	}
-
-	return profundidad;
-}
-
-int Nodo::childrenNumber()
-{
-	return children.size();
-}
-
-*/
