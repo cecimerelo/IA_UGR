@@ -62,7 +62,7 @@ int Botdemort::minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad,
 			if (tablero.getSeedsAt(me, (Position)(i + 1)) > 0)
 			{
 				hijo = tablero.simulateMove(movimientosPosibles[i]);
-				aux1 = max(aux1, minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, (hijo.getCurrentPlayer() == me)));
+				aux1 = max(aux1, minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, (hijo.getCurrentPlayer() == tablero.getCurrentPlayer())));
 
 				alpha = max(alpha, aux1);
 
@@ -83,7 +83,7 @@ int Botdemort::minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad,
 			if (tablero.getSeedsAt(contrario, (Position)(i + 1)) > 0)
 			{
 				hijo = tablero.simulateMove(movimientosPosibles[i]);
-				aux1 = min(aux1,minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, !(hijo.getCurrentPlayer() == me)));
+				aux1 = min(aux1,minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, !(hijo.getCurrentPlayer() == tablero.getCurrentPlayer())));
 
 				beta = min(beta, aux1);
 				if (beta <= alpha)
@@ -116,6 +116,8 @@ Move Botdemort::nextMove(const vector<Move> &adversary, const GameState &state)
 
 	Move movimientosPosibles[6] = {M1, M2, M3, M4, M5, M6};
 
+	cerr << "me: " << me << ", contrario: " << contrario <<endl;
+
 	for (int i = 0; i < 6; i++)
 	{
 		if (state.getSeedsAt(me, (Position)(i + 1)) > 0)
@@ -130,10 +132,7 @@ Move Botdemort::nextMove(const vector<Move> &adversary, const GameState &state)
 				maxValor = aux.puntuacion;
 				movimiento = aux.movimiento;
 			}
-			else if (aux.puntuacion == maxValor && hijo.getCurrentPlayer() == me)
-			{
-				movimiento = aux.movimiento;
-			}
+
 		}
 	}
 
