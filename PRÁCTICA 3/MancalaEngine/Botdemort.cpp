@@ -39,59 +39,60 @@ string Botdemort::getName()
 	profundidad: longitud del camino que comienza en la raiz y acaba en 
 	el Nodo 
 */
-int Botdemort::evaluaNodo(const GameState &tablero) // 0. No le he pasado player pq no esta en el .h
+int Botdemort::evaluaNodo(const GameState &tablero)
 {
 	return tablero.getScore(me);
 }
 
 int Botdemort::minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad, int alpha, int beta, bool jugadorAMaximizar)
 {
+	Nodo node;
 	GameState hijo;
 	Move movimientosPosibles[6] = {M1, M2, M3, M4, M5, M6};
-	int aux1;
+	int aux1 = 0;
 
+	// el valor del tablero sería el numero de semillas en el granero del jugador
 	if (tablero.isFinalState() or profundidad == 0)
 		return evaluaNodo(tablero);
 
-	if (jugadorAMaximizar)
+	if (tablero.getCurrentPlayer() == me)
 	{
-		alpha = INT_MIN;
+		aux1 = INT_MIN;
 		// para cada  movimiento posible del juego
 		for (int i = 0; i < 6; i++)
 		{
-			if (tablero.getSeedsAt(me, (Position)(i + 1)) > 0)
+			if (tablero.getSeedsAt(tablero.getCurrentPlayer(), (Position)(i + 1)) > 0)
 			{
 				hijo = tablero.simulateMove(movimientosPosibles[i]);
-				aux1 = max(aux1, minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, (hijo.getCurrentPlayer() == tablero.getCurrentPlayer())));
+				aux1 = max(aux1, minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, hijo.getCurrentPlayer() == tablero.getCurrentPlayer()));
 
 				alpha = max(alpha, aux1);
 
-				if (beta <= alpha)
-					break;
+				if (alpha >= beta) //poda correcta
+					return beta;
 			}
 		}
 
-		//should be aux1
-		return alpha;
+		return aux1;
 	}
 
 	else
 	{
-		beta = INT_MAX;
+		aux1 = INT_MAX;
 		for (int i = 0; i < 6; i++)
 		{
-			if (tablero.getSeedsAt(contrario, (Position)(i + 1)) > 0)
+			if (tablero.getSeedsAt(tablero.getCurrentPlayer(), (Position)(i + 1)) > 0)
 			{
 				hijo = tablero.simulateMove(movimientosPosibles[i]);
-				aux1 = min(aux1,minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, !(hijo.getCurrentPlayer() == tablero.getCurrentPlayer())));
+				aux1 = min(aux1, minimaxConPodaAlfaBeta(hijo, profundidad - 1, alpha, beta, !(hijo.getCurrentPlayer() == tablero.getCurrentPlayer())));
 
 				beta = min(beta, aux1);
-				if (beta <= alpha)
-					break;
+				if (beta <= alpha) //poda correcta
+					return alpha;
 			}
 		}
 
-		return beta;
+		return aux1;
 	}
 }
 
@@ -112,27 +113,21 @@ Move Botdemort::nextMove(const vector<Move> &adversary, const GameState &state)
 
 	GameState hijo;
 
-	int maxValor = INT_MIN;
+	int maxValor = 0;
 
 	Move movimientosPosibles[6] = {M1, M2, M3, M4, M5, M6};
 
-	cerr << "me: " << me << ", contrario: " << contrario <<endl;
-
 	for (int i = 0; i < 6; i++)
 	{
-		if (state.getSeedsAt(me, (Position)(i + 1)) > 0)
+		hijo = state.simulateMove(movimientosPosibles[i]);
+		aux.movimiento = movimientosPosibles[i];
+		aux.puntuacion = minimaxConPodaAlfaBeta(hijo, 9, INT_MIN, INT_MAX, true);
+
+		cerr << "aux.puntuacion: " << aux.puntuacion << " > " << maxValor << endl;
+		if (aux.puntuacion > maxValor)
 		{
-
-			hijo = state.simulateMove(movimientosPosibles[i]);
-			aux.movimiento = movimientosPosibles[i];
-			aux.puntuacion = minimaxConPodaAlfaBeta(hijo, 9, INT_MIN, INT_MAX, true);
-
-			if (aux.puntuacion > maxValor)
-			{
-				maxValor = aux.puntuacion;
-				movimiento = aux.movimiento;
-			}
-
+			maxValor = aux.puntuacion;
+			movimiento = aux.movimiento;
 		}
 	}
 
