@@ -41,16 +41,28 @@ string Botdemort::getName()
 */
 int Botdemort::evaluaNodo(const GameState &tablero, Player me)
 {
-	int suma = 0;
-	
+	int sumaMe = 0,
+		sumaContrario = 0,
+		sumaTotal = 0;
+	Player contrario;
+
+	if (me == J1)
+		contrario = J2;
+	else
+		contrario = J1;
+
 	//recorremos nuestras casillas para intentar mantener el mayor número de piezas
-	for(int i = 1; i < 7 ; i++){
-		suma = tablero.getSeedsAt(me, (Position)i);
+	for (int i = 1; i < 7; i++)
+	{
+		sumaMe = tablero.getSeedsAt(me, (Position)i);
 	}
 
-	suma += tablero.getScore(me) ;
+	sumaContrario += tablero.getScore(contrario);
+	sumaMe += tablero.getScore(me);
 
-	return suma;
+	sumaTotal = sumaMe - (sumaContrario/2);
+
+	return sumaTotal;
 }
 
 int Botdemort::minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad, int alpha, int beta, Player me)
@@ -77,7 +89,7 @@ int Botdemort::minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad,
 
 				alpha = max(alpha, aux1);
 
-				if ( beta <= alpha ) //poda correcta
+				if (beta <= alpha) //poda correcta
 					return beta;
 			}
 		}
@@ -125,7 +137,7 @@ Move Botdemort::nextMove(const vector<Move> &adversary, const GameState &state)
 	{
 		hijo = state.simulateMove(movimientosPosibles[i]);
 		aux.movimiento = movimientosPosibles[i];
-		aux.puntuacion = minimaxConPodaAlfaBeta(hijo, 10, INT_MIN, INT_MAX,me);
+		aux.puntuacion = minimaxConPodaAlfaBeta(hijo, 7, INT_MIN, INT_MAX, me);
 
 		cerr << "aux.puntuacion: " << aux.puntuacion << " > " << maxValor << endl;
 		if (aux.puntuacion > maxValor)
