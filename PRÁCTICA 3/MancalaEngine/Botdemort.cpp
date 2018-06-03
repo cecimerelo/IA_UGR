@@ -59,10 +59,6 @@ int Botdemort::evaluaNodo(const GameState &tablero, Player me)
 	}
 
 	sumaTotal = (sumaMe - sumaContrario/2) + (tablero.getScore(me) - tablero.getScore(contrario)/2);
-
-	//vamos a restarle las casillas que están cerca de mi casa
-	//sumaTotal = sumaMe - tablero.getSeedsAt(me,P1)/3 - tablero.getSeedsAt(me,P2)/3;
-
 	return sumaTotal;
 }
 
