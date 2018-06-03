@@ -54,13 +54,14 @@ int Botdemort::evaluaNodo(const GameState &tablero, Player me)
 	//recorremos nuestras casillas para intentar mantener el mayor número de piezas
 	for (int i = 0; i < 6; i++)
 	{
-		sumaMe = tablero.getSeedsAt(me, (Position)(i+1));
+		sumaMe = tablero.getSeedsAt(me, (Position)(i + 1));
+		sumaContrario = tablero.getSeedsAt(contrario, (Position)(i + 1));
 	}
 
-	sumaContrario += tablero.getScore(contrario);
-	sumaMe += tablero.getScore(me);
+	sumaTotal = (sumaMe - sumaContrario/2) + (tablero.getScore(me) - tablero.getScore(contrario)/2);
 
-	sumaTotal = sumaMe - (sumaContrario/2);
+	//vamos a restarle las casillas que están cerca de mi casa
+	//sumaTotal = sumaMe - tablero.getSeedsAt(me,P1)/3 - tablero.getSeedsAt(me,P2)/3;
 
 	return sumaTotal;
 }
@@ -74,7 +75,7 @@ int Botdemort::minimaxConPodaAlfaBeta(const GameState &tablero, int profundidad,
 
 	// el valor del tablero sería el numero de semillas en el granero del jugador
 	if (tablero.isFinalState() || profundidad == 0)
-		return evaluaNodo(tablero,me);
+		return evaluaNodo(tablero, me);
 
 	if (tablero.getCurrentPlayer() == me)
 	{
@@ -135,7 +136,6 @@ Move Botdemort::nextMove(const vector<Move> &adversary, const GameState &state)
 
 	for (int i = 0; i < 6; i++)
 	{
-		cerr << "Movimientos: " << movimientosPosibles[i];
 		hijo = state.simulateMove(movimientosPosibles[i]);
 		aux.movimiento = movimientosPosibles[i];
 		aux.puntuacion = minimaxConPodaAlfaBeta(hijo, 7, INT_MIN, INT_MAX, me);
@@ -143,14 +143,24 @@ Move Botdemort::nextMove(const vector<Move> &adversary, const GameState &state)
 		cerr << "aux.puntuacion: " << aux.puntuacion << " > " << maxValor << endl;
 		if (aux.puntuacion > maxValor)
 		{
+			//mover primero las piezas de atras
+			if (aux.puntuacion == maxValor)
+			{
+				cerr << "Son iguales" << endl;
+				if (movimiento > aux.movimiento)
+					break;
+				else
+					movimiento = aux.movimiento;
+			}
+			else
+				movimiento = aux.movimiento;
+
 			maxValor = aux.puntuacion;
-			movimiento = aux.movimiento;
 		}
 		else if (aux.puntuacion == maxValor && hijo.getCurrentPlayer() == me)
 		{
 			movimiento = aux.movimiento;
 		}
 	}
-
 	return movimiento;
 }
