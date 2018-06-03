@@ -58,7 +58,7 @@ int Botdemort::evaluaNodo(const GameState &tablero, Player me)
 		sumaContrario = tablero.getSeedsAt(contrario, (Position)(i + 1));
 	}
 
-	sumaTotal = (sumaMe - sumaContrario/2) + (tablero.getScore(me) - tablero.getScore(contrario)/2);
+	sumaTotal = (sumaMe - sumaContrario / 2) + (tablero.getScore(me) - tablero.getScore(contrario) / 2);
 	return sumaTotal;
 }
 
