@@ -22,10 +22,6 @@ struct Nodo
 
 class Botdemort : Bot
 {
-  private:
-	Player me;
-	Player contrario;
-
   public:
 	Botdemort();
 	~Botdemort();

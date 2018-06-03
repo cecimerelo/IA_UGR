@@ -52,9 +52,9 @@ int Botdemort::evaluaNodo(const GameState &tablero, Player me)
 		contrario = J1;
 
 	//recorremos nuestras casillas para intentar mantener el mayor número de piezas
-	for (int i = 1; i < 7; i++)
+	for (int i = 0; i < 6; i++)
 	{
-		sumaMe = tablero.getSeedsAt(me, (Position)i);
+		sumaMe = tablero.getSeedsAt(me, (Position)(i+1));
 	}
 
 	sumaContrario += tablero.getScore(contrario);
@@ -129,12 +129,13 @@ Move Botdemort::nextMove(const vector<Move> &adversary, const GameState &state)
 
 	GameState hijo;
 
-	int maxValor = 0;
+	int maxValor = INT_MIN;
 
 	Move movimientosPosibles[6] = {M1, M2, M3, M4, M5, M6};
 
 	for (int i = 0; i < 6; i++)
 	{
+		cerr << "Movimientos: " << movimientosPosibles[i];
 		hijo = state.simulateMove(movimientosPosibles[i]);
 		aux.movimiento = movimientosPosibles[i];
 		aux.puntuacion = minimaxConPodaAlfaBeta(hijo, 7, INT_MIN, INT_MAX, me);
